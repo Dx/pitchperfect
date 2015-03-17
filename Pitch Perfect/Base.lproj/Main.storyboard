@@ -2,11 +2,10 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="VjA-Na-UYw">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Record-->
+        <!--Say something-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="RecordSoundsViewController" customModule="Pitch_Perfect" customModuleProvider="target" sceneMemberID="viewController">
@@ -42,9 +41,33 @@
                                     <action selector="stopRecording:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="OS3-MZ-mdT"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to record" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xTr-ac-VRb">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="102" id="1dm-pY-Ncf"/>
+                                    <constraint firstAttribute="height" constant="21" id="hKN-5Z-4GG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="1dm-pY-Ncf"/>
+                                        <exclude reference="hKN-5Z-4GG"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="1dm-pY-Ncf"/>
+                                        <include reference="hKN-5Z-4GG"/>
+                                    </mask>
+                                </variation>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="xTr-ac-VRb" firstAttribute="centerX" secondItem="V6S-zI-B8i" secondAttribute="centerX" id="1MW-8X-fwQ"/>
+                            <constraint firstItem="xTr-ac-VRb" firstAttribute="top" secondItem="DdZ-OX-m11" secondAttribute="bottom" constant="8" id="EHO-Ch-buR"/>
                             <constraint firstItem="DdZ-OX-m11" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="ZKZ-aG-eTD"/>
                             <constraint firstAttribute="centerX" secondItem="gSs-UQ-eIF" secondAttribute="centerX" constant="-2" id="cUc-c2-8QN"/>
                             <constraint firstItem="DdZ-OX-m11" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="d2D-df-foB"/>
@@ -57,14 +80,17 @@
                                 <exclude reference="DdZ-OX-m11"/>
                                 <exclude reference="V6S-zI-B8i"/>
                                 <exclude reference="gSs-UQ-eIF"/>
+                                <exclude reference="xTr-ac-VRb"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="rro-Ce-yce"/>
-                                <exclude reference="dMM-iM-0Jt"/>
-                                <exclude reference="wmI-nJ-gqW"/>
                                 <exclude reference="ZKZ-aG-eTD"/>
                                 <exclude reference="d2D-df-foB"/>
+                                <exclude reference="1MW-8X-fwQ"/>
+                                <exclude reference="EHO-Ch-buR"/>
+                                <exclude reference="dMM-iM-0Jt"/>
+                                <exclude reference="wmI-nJ-gqW"/>
                                 <exclude reference="cUc-c2-8QN"/>
+                                <exclude reference="rro-Ce-yce"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -72,22 +98,26 @@
                                 <include reference="DdZ-OX-m11"/>
                                 <include reference="V6S-zI-B8i"/>
                                 <include reference="gSs-UQ-eIF"/>
+                                <include reference="xTr-ac-VRb"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="rro-Ce-yce"/>
-                                <include reference="dMM-iM-0Jt"/>
-                                <include reference="wmI-nJ-gqW"/>
                                 <include reference="ZKZ-aG-eTD"/>
                                 <include reference="d2D-df-foB"/>
+                                <include reference="1MW-8X-fwQ"/>
+                                <include reference="EHO-Ch-buR"/>
+                                <include reference="dMM-iM-0Jt"/>
+                                <include reference="wmI-nJ-gqW"/>
                                 <include reference="cUc-c2-8QN"/>
+                                <include reference="rro-Ce-yce"/>
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Record" id="u7a-ZY-wWn"/>
+                    <navigationItem key="navigationItem" title="Say something" id="u7a-ZY-wWn"/>
                     <connections>
                         <outlet property="recordButton" destination="DdZ-OX-m11" id="Iws-Xg-Wwb"/>
                         <outlet property="recordingLabel" destination="V6S-zI-B8i" id="INi-q1-7q4"/>
                         <outlet property="stopButton" destination="gSs-UQ-eIF" id="g34-pC-oKm"/>
+                        <outlet property="tapLabel" destination="xTr-ac-VRb" id="evn-0d-P83"/>
                         <segue destination="Yd1-hc-BeC" kind="show" identifier="stopRecording" id="bjH-hV-jDD"/>
                     </connections>
                 </viewController>
@@ -113,7 +143,7 @@
             </objects>
             <point key="canvasLocation" x="204" y="810"/>
         </scene>
-        <!--Play Sound View Controller-->
+        <!--Choose an option-->
         <scene sceneID="cro-VI-IT2">
             <objects>
                 <viewController id="Yd1-hc-BeC" customClass="PlaySoundViewController" customModule="Pitch_Perfect" customModuleProvider="target" sceneMemberID="viewController">
@@ -179,11 +209,11 @@
                             <constraint firstItem="Pwc-Zu-jxR" firstAttribute="top" secondItem="wCt-dV-qiE" secondAttribute="bottom" constant="240" id="DVU-va-hVW"/>
                             <constraint firstItem="GEh-RR-igd" firstAttribute="top" secondItem="wCt-dV-qiE" secondAttribute="bottom" constant="37" id="FKs-Bx-Hz5"/>
                             <constraint firstAttribute="centerX" secondItem="Crn-6S-9OX" secondAttribute="centerX" id="Nni-6H-5Jb"/>
-                            <constraint firstItem="MtO-jY-omr" firstAttribute="leading" secondItem="sQO-wD-6Nf" secondAttribute="leadingMargin" constant="15" id="jWs-eZ-kyn"/>
+                            <constraint firstItem="MtO-jY-omr" firstAttribute="leading" secondItem="sQO-wD-6Nf" secondAttribute="leadingMargin" constant="30" id="jWs-eZ-kyn"/>
                             <constraint firstItem="anv-Rl-7ZT" firstAttribute="top" secondItem="wCt-dV-qiE" secondAttribute="bottom" constant="240" id="l8O-gZ-xC0"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="GEh-RR-igd" secondAttribute="trailing" constant="15" id="rUe-Yp-PUh"/>
-                            <constraint firstItem="Pwc-Zu-jxR" firstAttribute="leading" secondItem="sQO-wD-6Nf" secondAttribute="leadingMargin" constant="15" id="ywk-Cc-Qgg"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="anv-Rl-7ZT" secondAttribute="trailing" constant="15" id="z3U-Op-jJ1"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="GEh-RR-igd" secondAttribute="trailing" constant="30" id="rUe-Yp-PUh"/>
+                            <constraint firstItem="Pwc-Zu-jxR" firstAttribute="leading" secondItem="sQO-wD-6Nf" secondAttribute="leadingMargin" constant="30" id="ywk-Cc-Qgg"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="anv-Rl-7ZT" secondAttribute="trailing" constant="30" id="z3U-Op-jJ1"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
@@ -228,6 +258,7 @@
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" title="Choose an option" id="Tez-cV-rff"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nC8-fg-yD3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

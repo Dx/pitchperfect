@@ -19,15 +19,6 @@ class PlaySoundViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-//        if var fileURL = NSBundle.mainBundle().pathForResource("movie_quote", ofType: "mp3"){
-//            var url = NSURL.fileURLWithPath(fileURL)
-//            
-//
-//        }
-//        else {
-//            println("the filePath is empty")
-//        }
         
         audioPlayer = AVAudioPlayer(contentsOfURL: receivedAudio.filePathUrl, error: nil)
         audioPlayer.enableRate = true
@@ -42,18 +33,11 @@ class PlaySoundViewController: UIViewController {
     }
     
     @IBAction func slowPressed(sender: AnyObject) {
-        audioPlayer.stop()
-        audioPlayer.rate = 0.4
-        audioPlayer.currentTime = 0.0
-        audioPlayer.play()
-        
+        playWithDiferentRate(0.4)
     }
     
     @IBAction func fastPressed(sender: AnyObject) {
-        audioPlayer.stop()
-        audioPlayer.rate = 1.5
-        audioPlayer.currentTime = 0.0
-        audioPlayer.play()
+        playWithDiferentRate(1.5)
     }
     
     @IBAction func stopPressed(sender: AnyObject) {
@@ -64,10 +48,25 @@ class PlaySoundViewController: UIViewController {
         playAudioWithVariablePitch(1000)
     }
     
-    func playAudioWithVariablePitch(pitch: Float) {
+    @IBAction func playDarthVaderAudio(sender: AnyObject) {
+        playAudioWithVariablePitch(-1050)
+    }
+    
+    func playWithDiferentRate(rate:Float) {
+        stopAudioPlayerAndEngine()
+        audioPlayer.rate = rate
+        audioPlayer.currentTime = 0.0
+        audioPlayer.play()
+    }
+    
+    func stopAudioPlayerAndEngine() {
         audioPlayer.stop()
         audioEngine.stop()
         audioEngine.reset()
+    }
+    
+    func playAudioWithVariablePitch(pitch: Float) {
+        stopAudioPlayerAndEngine()
         
         var audioPlayerNode = AVAudioPlayerNode()
         audioEngine.attachNode(audioPlayerNode)
@@ -83,9 +82,5 @@ class PlaySoundViewController: UIViewController {
         audioEngine.startAndReturnError(nil)
 
         audioPlayerNode.play()
-    }
-    
-    @IBAction func playDarthVaderAudio(sender: AnyObject) {
-        playAudioWithVariablePitch(-1050)
     }
 }
